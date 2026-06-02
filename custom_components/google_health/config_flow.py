@@ -12,6 +12,7 @@ from homeassistant.config_entries import SOURCE_REAUTH
 
 from homeassistant.const import CONF_NAME
 
+
 def _get_profile_schema(options: dict, is_setup: bool = False) -> vol.Schema:
     """Return the schema for the profile data."""
     schema = {}
@@ -19,7 +20,11 @@ def _get_profile_schema(options: dict, is_setup: bool = False) -> vol.Schema:
     if is_setup:
         schema[vol.Required(CONF_NAME)] = selector.TextSelector()
 
-    gender_key = vol.Required(CONF_GENDER, default=options[CONF_GENDER]) if CONF_GENDER in options else vol.Required(CONF_GENDER)
+    gender_key = (
+        vol.Required(CONF_GENDER, default=options[CONF_GENDER])
+        if CONF_GENDER in options
+        else vol.Required(CONF_GENDER)
+    )
     schema[gender_key] = selector.SelectSelector(
         selector.SelectSelectorConfig(
             options=[
@@ -30,15 +35,24 @@ def _get_profile_schema(options: dict, is_setup: bool = False) -> vol.Schema:
         )
     )
 
-    dob_key = vol.Required(CONF_DOB, default=options[CONF_DOB]) if CONF_DOB in options else vol.Required(CONF_DOB)
+    dob_key = (
+        vol.Required(CONF_DOB, default=options[CONF_DOB])
+        if CONF_DOB in options
+        else vol.Required(CONF_DOB)
+    )
     schema[dob_key] = selector.TextSelector()
 
-    height_key = vol.Required(CONF_HEIGHT, default=options[CONF_HEIGHT]) if CONF_HEIGHT in options else vol.Required(CONF_HEIGHT)
+    height_key = (
+        vol.Required(CONF_HEIGHT, default=options[CONF_HEIGHT])
+        if CONF_HEIGHT in options
+        else vol.Required(CONF_HEIGHT)
+    )
     schema[height_key] = selector.TextSelector(
         selector.TextSelectorConfig(type=selector.TextSelectorType.NUMBER)
     )
 
     return vol.Schema(schema)
+
 
 class OAuth2FlowHandler(
     config_entry_oauth2_flow.AbstractOAuth2FlowHandler, domain=DOMAIN
@@ -66,7 +80,7 @@ class OAuth2FlowHandler(
         if self.source == SOURCE_REAUTH:
             # We don't want to show the profile step on reauth.
             return self.async_create_entry(title=self.flow_impl.name, data=data)
-        
+
         self.oauth_data = data
         return await self.async_step_profile()
 
@@ -75,15 +89,14 @@ class OAuth2FlowHandler(
         errors = {}
         if user_input is not None:
             import datetime
+
             try:
                 datetime.datetime.strptime(user_input[CONF_DOB], "%Y-%m-%d")
                 # Ensure height is saved as a float
                 user_input[CONF_HEIGHT] = float(user_input[CONF_HEIGHT])
                 account_name = user_input.pop(CONF_NAME)
                 return self.async_create_entry(
-                    title=account_name, 
-                    data=self.oauth_data,
-                    options=user_input
+                    title=account_name, data=self.oauth_data, options=user_input
                 )
             except ValueError:
                 errors["base"] = "invalid_date"
@@ -115,6 +128,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         errors = {}
         if user_input is not None:
             import datetime
+
             try:
                 datetime.datetime.strptime(user_input[CONF_DOB], "%Y-%m-%d")
                 user_input[CONF_HEIGHT] = float(user_input[CONF_HEIGHT])

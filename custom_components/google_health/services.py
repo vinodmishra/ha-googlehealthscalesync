@@ -11,6 +11,7 @@ from .const import DOMAIN, CONF_GENDER, CONF_DOB, CONF_HEIGHT
 
 _LOGGER = logging.getLogger(__name__)
 
+
 async def async_setup_services(hass: HomeAssistant) -> None:
     """Register services for Google Health."""
 

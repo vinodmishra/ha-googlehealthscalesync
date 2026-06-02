@@ -136,12 +136,27 @@ data:
 
 ## Selecting a Specific Account (Multi-Account Support)
 
-If you have multiple Google Health accounts configured, you can easily select which account to use when logging body measurements.
+If you have multiple Google Health accounts configured, you can select which account to use when logging body measurements by specifying the entry_id in the service call.
 
-### Using the Blueprint
-The blueprint provides a simple dropdown menu where you can select the specific Google Health account you want to sync your scale data to.
+### How to Find the entry_id
 
-### Using the Developer Tools / Custom Automations
-When calling the `google_health.log_body_measurements` service manually or via custom automations, you will see a dropdown field called **Target Account**. Simply select the account you wish to log the measurements to. No need to look up internal ID strings!
+1. Go to **Settings > Devices & Services** in Home Assistant.
+2. Click on the three dots (?) for the Google Health Scale Sync integration you want to use.
+3. Select **System Options** or **Show Info** (depending on your Home Assistant version).
+4. Copy the entry_id value as shown below:
+
+![How to copy entry_id](images/entry_id.png)
+
+### Example: Log weight for a specific account
+`yaml
+action: google_health.log_body_measurements
+data:
+  weight: 75.5
+  entry_id: "your_entry_id_here"
+`
+
+### New Service Action in Developer Tools
+
+You will see the new entry_id field available when calling the service in Home Assistant Developer Tools:
 
 ![Service action with entry_id](images/service.png)
