@@ -1,0 +1,49 @@
+{
+  "config": {
+    "error": {
+      "invalid_date": "Invalid Date of Birth format. Please use YYYY-MM-DD."
+    },
+    "step": {
+      "pick_implementation": {
+        "title": "Pick Authentication Method"
+      },
+      "profile": {
+        "title": "Google Health Scale Sync Profile Settings",
+        "description": "Provide your profile data. This is used to calculate your body fat percentage from impedance when using the Log Body Measurements service.",
+        "data": {
+          "name": "Account Name",
+          "gender": "Gender",
+          "date_of_birth": "Date of Birth (YYYY-MM-DD)",
+          "height": "Height (cm)"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Account is already configured",
+      "already_in_progress": "Configuration flow is already in progress",
+      "missing_configuration": "The component is not configured. Please follow the documentation.",
+      "oauth_error": "Received invalid token data.",
+      "authorize_url_timeout": "Timeout generating authorize URL.",
+      "missing_credentials": "The integration requires Application Credentials."
+    },
+    "create_entry": {
+      "default": "Successfully authenticated with Google Health Scale Sync"
+    }
+  },
+  "options": {
+    "error": {
+      "invalid_date": "Invalid Date of Birth format. Please use YYYY-MM-DD."
+    },
+    "step": {
+      "init": {
+        "title": "Google Health Scale Sync Profile Settings",
+        "description": "Provide your profile data. This is used to calculate your body fat percentage from impedance when using the Log Body Measurements service.",
+        "data": {
+          "gender": "Gender",
+          "date_of_birth": "Date of Birth (YYYY-MM-DD)",
+          "height": "Height (cm)"
+        }
+      }
+    }
+  }
+}

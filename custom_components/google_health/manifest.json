@@ -1,0 +1,13 @@
+{
+  "domain": "google_health",
+  "name": "Google Health Scale Sync",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": ["application_credentials", "http"],
+  "documentation": "https://github.com/vinodmishra/ha-googlehealthscalesync",
+  "issue_tracker": "https://github.com/vinodmishra/ha-googlehealthscalesync/issues",
+  "integration_type": "service",
+  "iot_class": "cloud_push",
+  "requirements": [],
+  "version": "0.0.1"
+}
