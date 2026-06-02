@@ -31,7 +31,7 @@ blueprint:
       default: ""
       selector:
         config_entry:
-          integration: google_health
+          integration: google_health_scale_sync
     min_weight:
       name: Minimum Weight Threshold (Optional)
       description: Weight must be ABOVE this value to sync (leave 0 to disable).
@@ -77,7 +77,7 @@ condition:
       {{ weight > 0 and min_ok and max_ok }}
 
 action:
-  - action: google_health.log_body_measurements
+  - action: google_health_scale_sync.log_body_measurements
     data: >
       {% set payload = {"weight": trigger.to_state.state | float(0)} %}
       

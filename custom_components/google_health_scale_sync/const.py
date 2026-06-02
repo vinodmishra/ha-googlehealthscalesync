@@ -1,6 +1,6 @@
 """Constants for the Google Health integration."""
 
-DOMAIN = "google_health"
+DOMAIN = "google_health_scale_sync"
 
 OAUTH2_AUTHORIZE = "https://accounts.google.com/o/oauth2/v2/auth"
 OAUTH2_TOKEN = "https://oauth2.googleapis.com/token"

@@ -47,4 +47,4 @@ log_body_measurements:
       required: false
       selector:
         config_entry:
-          integration: google_health
+          integration: google_health_scale_sync

@@ -41,6 +41,6 @@ jobs:
       - name: Install ruff
         run: pip install ruff
       - name: Run ruff check
-        run: ruff check custom_components/google_health/
+        run: ruff check custom_components/google_health_scale_sync/
       - name: Run ruff format check
-        run: ruff format --check custom_components/google_health/
+        run: ruff format --check custom_components/google_health_scale_sync/

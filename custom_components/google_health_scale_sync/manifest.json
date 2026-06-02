@@ -1,5 +1,5 @@
 {
-  "domain": "google_health",
+  "domain": "google_health_scale_sync",
   "name": "Google Health Scale Sync",
   "codeowners": [],
   "config_flow": true,

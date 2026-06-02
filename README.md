@@ -10,7 +10,7 @@ A custom component for Home Assistant that logs body measurements (weight and bo
 
 ## Features
 
-- **Log Body Measurements**: A unified google_health.log_body_measurements action to easily record weight and body fat.
+- **Log Body Measurements**: A unified google_health_scale_sync.log_body_measurements action to easily record weight and body fat.
 - **Smart Body Fat Calculation**: If you only have raw impedance and weight readings (like from a smart scale), this integration uses the height, date_of_birth, and gender you provide during the setup process to calculate your body fat percentage accurately before logging it!
 
 
@@ -26,7 +26,7 @@ A custom component for Home Assistant that logs body measurements (weight and bo
 
 ### Method 2: Manual
 1. Download or clone this repository.
-2. Copy the custom_components/google_health directory to your custom_components directory in your Home Assistant configuration folder.
+2. Copy the custom_components/google_health_scale_sync directory to your custom_components directory in your Home Assistant configuration folder.
 3. Restart Home Assistant.
 
 
@@ -88,15 +88,15 @@ This integration uses the **Google Health API v4**, which requires a Google Clou
 You can log weight and body composition data to Google Health in two ways:
 
 - **Use the included Home Assistant blueprint** for easy, automated logging from your smart scale sensors (recommended for most users).
-- **Call the google_health.log_body_measurements action directly** in your own automations or scripts (see documentation below).
+- **Call the google_health_scale_sync.log_body_measurements action directly** in your own automations or scripts (see documentation below).
 
 ### Quick Start: Add the Blueprint
 
-[![Add Blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/vinodmishra/ha-googlehealthscalesync/blob/main/blueprints/google_health_body_scale_logger.yaml)
+[![Add Blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/vinodmishra/ha-googlehealthscalesync/blob/main/blueprints/google_health_scale_sync_body_scale_logger.yaml)
 
 Or, manually import the blueprint from this repo:
 - Go to **Settings > Automations & Scenes > Blueprints** in Home Assistant.
-- Click **Import Blueprint** and paste the url: https://github.com/vinodmishra/ha-googlehealthscalesync/blob/main/blueprints/google_health_body_scale_logger.yaml
+- Click **Import Blueprint** and paste the url: https://github.com/vinodmishra/ha-googlehealthscalesync/blob/main/blueprints/google_health_scale_sync_body_scale_logger.yaml
 
 **Features:**
 - Logs weight, body fat %, and impedance to Google Health.
@@ -115,11 +115,11 @@ Or, manually import the blueprint from this repo:
 
 ## Using the log_body_measurements Action
 
-You can find the google_health.log_body_measurements action in your Home Assistant Developer Tools or use it in automations.
+You can find the google_health_scale_sync.log_body_measurements action in your Home Assistant Developer Tools or use it in automations.
 
 ### Example: Log weight and exact body fat percentage
 `yaml
-action: google_health.log_body_measurements
+action: google_health_scale_sync.log_body_measurements
 data:
   weight: 75.5
   fat: 15.2
@@ -127,7 +127,7 @@ data:
 
 ### Example: Log weight and calculate body fat via impedance
 `yaml
-action: google_health.log_body_measurements
+action: google_health_scale_sync.log_body_measurements
 data:
   weight: 75.5
   impedance: 505
@@ -149,7 +149,7 @@ If you have multiple Google Health accounts configured, you can select which acc
 
 ### Example: Log weight for a specific account
 `yaml
-action: google_health.log_body_measurements
+action: google_health_scale_sync.log_body_measurements
 data:
   weight: 75.5
   entry_id: "your_entry_id_here"
